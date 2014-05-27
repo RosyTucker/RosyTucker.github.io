@@ -1,0 +1,20 @@
+.header {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.main-animation {
+    background-color: #D95B43;
+}
+
+.section{
+    padding: 40px;
+}
+
+.padded{
+    padding: 20px;
+}
+
+.section-coloured{
+     background-color: #ECD078;
+ }
