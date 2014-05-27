@@ -1,10 +1,10 @@
 var numBoids = 500;
-var timestep = 100;
-var boidSize = window.outerWidth* 0.0005;
+var timestep = 20;
+var boidSize = window.outerWidth* 0.003;
 
-var repulsion = 7* boidSize;
-var alignment = 16 * boidSize;
-var attraction = 80 * boidSize;
+var repulsion = 5* boidSize;
+var alignment = 10 * boidSize;
+var attraction = 15 * boidSize;
 var canvas;
 var ctx;
 var boids = [];
@@ -115,6 +115,18 @@ function updateBoid(boid){
     boid.velocity = Point.normalize(boid.velocity);
     boid.position.x += boid.velocity.x;//* (1000/window.outerWidth);
     boid.position.y += boid.velocity.y;//* (1000/window.outerWidth);
+
+    if(boid.position.x > canvas.width*1.1){
+        boid.position.x = 0 + boid.position.x - canvas.width;
+    }else if(boid.position.x < 0){
+        boid.position.x = canvas.width + boid.position.x;
+    }
+
+    if(boid.position.y > canvas.height*1.1){
+        boid.position.y = 0 + boid.position.y - canvas.height;
+    }else if(boid.position.y < 0){
+        boid.position.y = canvas.height + boid.position.y;
+    }
 }
 
 
