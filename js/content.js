@@ -1,10 +1,10 @@
-var numBoids = 100;
-var timestep = 20;
+var numBoids = 500;
+var timestep = 100;
+var boidSize = window.outerWidth* 0.0005;
 
-var repulsion = 100;
-var alignment = 200;
-var attraction = 300;
-var initialSpeed = 5;
+var repulsion = 7* boidSize;
+var alignment = 16 * boidSize;
+var attraction = 80 * boidSize;
 var canvas;
 var ctx;
 var boids = [];
@@ -12,6 +12,7 @@ var boids = [];
 $(function animate(){
     setup();
     setInterval(update, timestep);
+    update();
 });
 
 
@@ -28,10 +29,11 @@ function setup() {
     if(canvas){
         ctx = canvas.getContext("2d");
         for (var i = 0; i < numBoids; i++) {
-            var velocityVector =new Vector((-1 + (Math.random()*2))* initialSpeed,
-                (-1 + (Math.random()*2))* initialSpeed);
-            boids[i] = new Boid(Math.random()* canvas.width,
-                Math.random() * canvas.height, velocityVector);
+            var initialVelocity =new Point((-0.5 + (Math.random()*2)),
+                (-1 + (Math.random()*2)));
+            var initialPosition =new Point(Math.random()* canvas.width,
+                Math.random() * canvas.height);
+            boids[i] = new Boid(initialPosition, initialVelocity);
         }
     }
 };
@@ -47,104 +49,123 @@ function update() {
 function render(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle="#FFFFFF";
-    var boidSize = window.outerWidth* 0.02;
     for (var i = 0; i < boids.length; i++) {
         ctx.strokeRect(boids[i].position.x+0.5, boids[i].position.y+0.5, boidSize, boidSize);
     }
 }
 
 function updateBoid(boid){
-    var neighbours = 0;
-    var alignNeighbours = 0;
-    var sumPosition = new Point(0,0);
-    var sumVelocity = new Vector(0,0);
+    var attractionTotal = new Point(0,0);
+    var orientationTotal = new Point(0,0);
+    var repulsionTotal = new Point(0,0);
 
-    console.log("Velocity: " + boid.velocityVector[0] + "," + boid.velocityVector[1]);
+    var repulsionNeighbours = 0;
+    var orientationNeighbours = 0;
+    var attractionNeighbours = 0;
 
     for (var i = 0; i < boids.length; i++) {
         if(boids[i] != boid){
-            if(inRange(boids[i], boid, repulsion)){
-                repulse(boid, boids[i], sumPosition);
-                neighbours++;
-            }else if(inRange(boids[i], boid, alignment)){
-                align(boid, sumVelocity);
-                alignNeighbours++
-            }else if(inRange(boids[i], boid, attraction)){
-                attract(boid, boids[i], sumPosition);
-                neighbours++;
+            if(boid.inRange(boids[i], repulsion)){
+                var diff = new Point(0,0);
+                diff.x = boids[i].position.x - boid.position.x;
+                diff.y = boids[i].position.y - boid.position.y;
+                diff = Point.normalize(diff);
+                repulsionTotal.x -= diff.x;
+                repulsionTotal.y -= diff.y;
+                repulsionNeighbours++;
+            }else if(boid.inRange(boids[i], alignment)){
+                orientationTotal.x += boids[i].velocity.x;
+                orientationTotal.y += boids[i].velocity.y;
+                orientationNeighbours++;
+            }else if(boid.inRange(boids[i], attraction)){
+                var diff = new Point(0,0);
+                diff.x = boids[i].position.x - boid.position.x;
+                diff.y = boids[i].position.y - boid.position.y;
+                diff = Point.normalize(diff);
+                attractionTotal.x += diff.x;
+                attractionTotal.y += diff.y;
+                attractionNeighbours++;
             }
         }
     }
-    if(neighbours > 0){
-        sumPosition.x = sumPosition.x/neighbours;
-        sumPosition.y = sumPosition.y/neighbours;
+
+
+
+    if(repulsionNeighbours > 0){
+        repulsionTotal.x = repulsionTotal.x / repulsionNeighbours;
+        repulsionTotal.y = repulsionTotal.y / repulsionNeighbours;
+        repulsionTotal = Point.normalize(repulsionTotal);
     }
 
-    boid.velocityVector.dx += -0.5 + Math.random();
-    boid.velocityVector.dy += -0.5 + Math.random();
+    if(attractionNeighbours > 0){
+        attractionTotal.x = attractionTotal.x / attractionNeighbours;
+        attractionTotal.y = attractionTotal.y / attractionNeighbours;
+        attractionTotal = Point.normalize(attractionTotal);
+    }
 
-    boid.position.x += boid.velocityVector.dx;
-    boid.position.y += boid.velocityVector.dy;
+   if(orientationNeighbours > 0){
+        orientationTotal.x = orientationTotal.x / orientationNeighbours;
+        orientationTotal.y = orientationTotal.y / orientationNeighbours;
+         orientationTotal = Point.normalize(orientationTotal);
+
+   }
+
+    boid.velocity.x += (attractionTotal.x + orientationTotal.x + repulsionTotal.x);
+    boid.velocity.y += (attractionTotal.y + orientationTotal.y + repulsionTotal.y);
+    boid.velocity = Point.normalize(boid.velocity);
+    boid.position.x += boid.velocity.x;//* (1000/window.outerWidth);
+    boid.position.y += boid.velocity.y;//* (1000/window.outerWidth);
 }
 
-function repulse(boid, neighbour, sumVector){
-    var diff = new Point(0,0)
-    diff.x = neighbour.position.x - boid.position.x;
-    diff.y = neighbour.position.y - boid.position.y;
-    diff = normalizePosition(diff);
-    sumVector.x -= diff.x * (1/euclid(neighbour.x, boid.x, neighbour.y, boid.y));
-    sumVector.y -= diff.y * (1/euclid(neighbour.x, boid.x, neighbour.y, boid.y));
+
+
+
+/********************************************
+ Boid Class
+ ********************************************/
+
+function Boid(position, velocity){
+    this.position = position;
+    this.velocity = velocity;
 }
 
-function align(neighbour, sumVelocity){
-    sumVelocity.dx += neighbour.velocityVector.x;
-    sumVelocity.dx += neighbour.velocityVector.y;
-}
 
-function attract(boid, neighbour, sumVector){
-    var diff = new Point(0,0)
-    diff.x = neighbour.position.x - boid.position.x;
-    diff.y = neighbour.position.y - boid.position.y;
-    diff = normalizePosition(diff);
-    sumVector.x += diff.x * (1/euclid(neighbour.x, boid.x, neighbour.y, boid.y));
-    sumVector.y += diff.y * (1/euclid(neighbour.x, boid.x, neighbour.y, boid.y));
-}
-
-function inRange(neighbour, boid, distance){
-    if(euclid(neighbour.x, boid.x, neighbour.y, boid.y) <= distance){
-        return true;
+Boid.prototype.inRange = function(neighbour, distance){
+    if(neighbour instanceof  Boid){
+        if(Point.euclid(neighbour.position, this.position) <= distance){
+            return true;
+        }else{
+            return false;
+        }
     }else{
-        return false;
+        console.error("Neighbour was not a boid");
     }
 }
 
-function Boid(x, y, velocity){
-    this.position = new Point(x,y);
-    this.velocityVector = velocity;
-}
-
+/********************************************
+ Point Class
+ ********************************************/
 function Point(x,y){
     this.x = x;
     this.y =y;
 }
 
-function Vector(dx,dy){
-    this.dx = dx;
-    this.dy =dy;
-}
-
-function normalizePosition(position) {
-    var newPosition = new Vector(0,0);
-    var length = Math.sqrt( Math.pow(position.x,2) + Math.pow(position.y,2) );
+Point.normalize = function(point) {
+    var newPosition = new Point(0,0);
+    var length = Math.sqrt( Math.pow(point.x,2) + Math.pow(point.y,2) );
     if (length != 0) {
-        newPosition.x = position.x/length;
-        newPosition.y = position.y/length;
+        newPosition.x = point.x/length;
+        newPosition.y = point.y/length;
     }
     return newPosition;
 }
 
-function euclid(x1,x2,y1,y2){
-    var euclid = Math.pow(x1 - x2, 2);
-    euclid += Math.pow(y1- y2, 2);
-    return Math.sqrt(euclid);
+Point.euclid = function(point1,point2){
+    if(point1 instanceof Point && point2 instanceof Point){
+        var euclid = Math.pow(point1.x - point2.x, 2);
+        euclid += Math.pow(point1.y- point2.y, 2);
+        return Math.sqrt(euclid);
+    }else{
+        console.error("Non Point passed to Point.euclid");
+    }
 }
