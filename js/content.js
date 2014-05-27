@@ -116,13 +116,13 @@ function updateBoid(boid){
     boid.position.x += boid.velocity.x;//* (1000/window.outerWidth);
     boid.position.y += boid.velocity.y;//* (1000/window.outerWidth);
 
-    if(boid.position.x > canvas.width*1.1){
+    if(boid.position.x > canvas.width){
         boid.position.x = 0 + boid.position.x - canvas.width;
     }else if(boid.position.x < 0){
         boid.position.x = canvas.width + boid.position.x;
     }
 
-    if(boid.position.y > canvas.height*1.1){
+    if(boid.position.y > canvas.height){
         boid.position.y = 0 + boid.position.y - canvas.height;
     }else if(boid.position.y < 0){
         boid.position.y = canvas.height + boid.position.y;
