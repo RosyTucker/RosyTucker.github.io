@@ -11,7 +11,7 @@ var boids = [];
 
 $(function animate(){
     setup();
-    $(window).on("resize", resizeCanvas());
+    $(window).on("resize", resizeCanvas);
     setInterval(update, timestep);
 
 })
