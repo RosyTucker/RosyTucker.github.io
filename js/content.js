@@ -1,27 +1,30 @@
-var numBoids = 500;
+var numBoids = 50;
 var timestep = 20;
-var boidSize = window.outerWidth* 0.003;
+var boidSize = window.outerWidth* 0.01;
 
-var repulsion = 5* boidSize;
-var alignment = 10 * boidSize;
-var attraction = 15 * boidSize;
+var repulsion = 15 +  boidSize;
+var alignment = 30 +  boidSize;
+var attraction = 45 + boidSize;
 var canvas;
 var ctx;
 var boids = [];
 
 $(function animate(){
     setup();
+    $(window).on("resize", resizeCanvas());
     setInterval(update, timestep);
-    update();
-});
 
+})
 
 function resizeCanvas(){
+    console.log("Resizing");
     canvas.width =window.outerWidth;
     canvas.height =window.outerHeight*0.7;
     canvas.minHeight=window.outerHeight*0.5;
     canvas.minWidth =window.outerWidth;
+    boidSize = window.outerWidth* 0.01;
 }
+
 
 function setup() {
     canvas = $('canvas').get(0);
@@ -29,14 +32,15 @@ function setup() {
     if(canvas){
         ctx = canvas.getContext("2d");
         for (var i = 0; i < numBoids; i++) {
-            var initialVelocity =new Point((-0.5 + (Math.random()*2)),
+            var initialVelocity =new Vector((-0.5 + (Math.random()*2)),
                 (-1 + (Math.random()*2)));
-            var initialPosition =new Point(Math.random()* canvas.width,
+            var initialPosition =new Vector(Math.random()* canvas.width,
                 Math.random() * canvas.height);
             boids[i] = new Boid(initialPosition, initialVelocity);
         }
     }
-};
+}
+
 
 function update() {
     for (var i = 0; i < boids.length; i++) {
@@ -50,72 +54,87 @@ function render(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle="#FFFFFF";
     for (var i = 0; i < boids.length; i++) {
-        ctx.strokeRect(boids[i].position.x+0.5, boids[i].position.y+0.5, boidSize, boidSize);
+        ctx.strokeRect(boids[i].position.x - (boidSize*0.5), boids[i].position.y - (boidSize*0.5), boidSize, boidSize);
     }
 }
 
-function updateBoid(boid){
-    var attractionTotal = new Point(0,0);
-    var orientationTotal = new Point(0,0);
-    var repulsionTotal = new Point(0,0);
 
+function updateBoid(boid){
+
+    //Sum vectors of all neighbour positions
+    var attractionTotal = new Vector(0,0);
+    var alignmentTotal = new Vector(0,0);
+    var repulsionTotal = new Vector(0,0);
+
+    //Neighbour Counts
     var repulsionNeighbours = 0;
-    var orientationNeighbours = 0;
+    var alignmentNeighbours = 0;
     var attractionNeighbours = 0;
 
     for (var i = 0; i < boids.length; i++) {
         if(boids[i] != boid){
             if(boid.inRange(boids[i], repulsion)){
-                var diff = new Point(0,0);
+                var diff = new Vector(0,0);
                 diff.x = boids[i].position.x - boid.position.x;
                 diff.y = boids[i].position.y - boid.position.y;
-                diff = Point.normalize(diff);
-                repulsionTotal.x -= diff.x;
-                repulsionTotal.y -= diff.y;
+                diff.normal();
+                repulsionTotal.sub(diff);
                 repulsionNeighbours++;
             }else if(boid.inRange(boids[i], alignment)){
-                orientationTotal.x += boids[i].velocity.x;
-                orientationTotal.y += boids[i].velocity.y;
-                orientationNeighbours++;
+                alignmentTotal.x += boids[i].velocity.x;
+                alignmentTotal.y += boids[i].velocity.y;
+                alignmentNeighbours++;
             }else if(boid.inRange(boids[i], attraction)){
-                var diff = new Point(0,0);
+                var diff = new Vector(0,0);
                 diff.x = boids[i].position.x - boid.position.x;
                 diff.y = boids[i].position.y - boid.position.y;
-                diff = Point.normalize(diff);
+                diff.normal();
                 attractionTotal.x += diff.x;
                 attractionTotal.y += diff.y;
                 attractionNeighbours++;
             }
         }
     }
+    var total = new Vector(0,0);
+    total.add(calculateRepulsion(repulsionTotal,repulsionNeighbours));
+    total.add(calculateAlignment(alignmentTotal,alignmentNeighbours));
+    total.add(calculateAttraction(attractionTotal,alignmentNeighbours));
+    boid.updatePosition(total);
+    processEdges(boid);
+}
 
 
-
+function calculateRepulsion(repulsionTotal, repulsionNeighbours){
     if(repulsionNeighbours > 0){
         repulsionTotal.x = repulsionTotal.x / repulsionNeighbours;
         repulsionTotal.y = repulsionTotal.y / repulsionNeighbours;
-        repulsionTotal = Point.normalize(repulsionTotal);
+        return repulsionTotal.normal();
     }
+    return new Vector(0,0);
+}
 
-    if(attractionNeighbours > 0){
+
+function calculateAlignment(alignmentTotal, alignmentNeighbours) {
+    if(alignmentNeighbours > 0){
+        alignmentTotal.x = alignmentTotal.x / alignmentNeighbours;
+        alignmentTotal.y = alignmentTotal.y / alignmentNeighbours;
+        return alignmentTotal.normal();
+    }
+    return new Vector(0,0);
+}
+
+
+function calculateAttraction(attractionTotal, attractionNeighbours) {
+    if (attractionNeighbours > 0) {
         attractionTotal.x = attractionTotal.x / attractionNeighbours;
         attractionTotal.y = attractionTotal.y / attractionNeighbours;
-        attractionTotal = Point.normalize(attractionTotal);
+        return attractionTotal.normal();
     }
+    return new Vector(0,0);
+}
 
-   if(orientationNeighbours > 0){
-        orientationTotal.x = orientationTotal.x / orientationNeighbours;
-        orientationTotal.y = orientationTotal.y / orientationNeighbours;
-         orientationTotal = Point.normalize(orientationTotal);
 
-   }
-
-    boid.velocity.x += (attractionTotal.x + orientationTotal.x + repulsionTotal.x);
-    boid.velocity.y += (attractionTotal.y + orientationTotal.y + repulsionTotal.y);
-    boid.velocity = Point.normalize(boid.velocity);
-    boid.position.x += boid.velocity.x;//* (1000/window.outerWidth);
-    boid.position.y += boid.velocity.y;//* (1000/window.outerWidth);
-
+function processEdges(boid){
     if(boid.position.x > canvas.width){
         boid.position.x = 0 + boid.position.x - canvas.width;
     }else if(boid.position.x < 0){
@@ -130,8 +149,6 @@ function updateBoid(boid){
 }
 
 
-
-
 /********************************************
  Boid Class
  ********************************************/
@@ -143,41 +160,26 @@ function Boid(position, velocity){
 
 
 Boid.prototype.inRange = function(neighbour, distance){
-    if(neighbour instanceof  Boid){
-        if(Point.euclid(neighbour.position, this.position) <= distance){
-            return true;
-        }else{
-            return false;
-        }
+    //Defense
+    if(!neighbour instanceof  Boid)
+        throw new Error("Neighbour was not a boid");
+
+    if(Vector.euclid(neighbour.position, this.position) <= distance){
+        return true;
     }else{
-        console.error("Neighbour was not a boid");
+        return false;
     }
 }
 
-/********************************************
- Point Class
- ********************************************/
-function Point(x,y){
-    this.x = x;
-    this.y =y;
+Boid.prototype.updatePosition = function (total) {
+    //Defense
+    if(!total instanceof  Vector)
+        throw new Error("Total was not a Vector");
+
+    this.velocity.add(total);
+    this.velocity.normal();
+    var noise = (-1 + (Math.random()*2));
+    this.position.x += this.velocity.x + noise;
+    this.position.y += this.velocity.y+ noise;
 }
 
-Point.normalize = function(point) {
-    var newPosition = new Point(0,0);
-    var length = Math.sqrt( Math.pow(point.x,2) + Math.pow(point.y,2) );
-    if (length != 0) {
-        newPosition.x = point.x/length;
-        newPosition.y = point.y/length;
-    }
-    return newPosition;
-}
-
-Point.euclid = function(point1,point2){
-    if(point1 instanceof Point && point2 instanceof Point){
-        var euclid = Math.pow(point1.x - point2.x, 2);
-        euclid += Math.pow(point1.y- point2.y, 2);
-        return Math.sqrt(euclid);
-    }else{
-        console.error("Non Point passed to Point.euclid");
-    }
-}

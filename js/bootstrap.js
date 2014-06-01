@@ -357,7 +357,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
     if ($next.hasClass('active')) return this.sliding = false
 
-    var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], velocityVector: direction })
+    var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], direction: direction })
     this.$element.trigger(e)
     if (e.isDefaultPrevented()) return
 
