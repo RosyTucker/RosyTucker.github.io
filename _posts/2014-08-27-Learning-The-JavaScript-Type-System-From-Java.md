@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Learning The JavaScript Type System, From Java"
-date:   2014-08-27
+title: "Learning The JavaScript Type System, From Java"
+date: 2014-08-27
 type: blog
 ---
 
