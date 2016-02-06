@@ -7,7 +7,7 @@ layout: default
   <h1 class="page-heading">Posts</h1>
 
   <ul class="post-list">
-    {% assign blogPosts = (site.posts | where: "type","blog") %}
+    {% assign blogPosts = (site.posts | where: "category","blog") %}
     {% for post in blogPosts  %}
       <li>
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
@@ -22,7 +22,7 @@ layout: default
   <h1 class="page-heading">Tutorials</h1>
 
   <ul class="post-list">
-    {% assign tutorials = (site.posts | where: "type","tutorial") %}
+    {% assign tutorials = (site.posts | where: "category","tutorial") %}
     {% for post in tutorials  %}
     <li>
       <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>

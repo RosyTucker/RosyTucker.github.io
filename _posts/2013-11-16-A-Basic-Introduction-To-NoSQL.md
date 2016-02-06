@@ -2,7 +2,7 @@
 layout: post
 title: "A Basic Introduction to NoSQL"
 date: 2013-11-16
-type: blog
+category: blog
 ---
 
 Recently the idea of a NoSQL solution for data storage has been gaining more

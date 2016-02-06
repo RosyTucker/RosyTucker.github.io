@@ -2,7 +2,7 @@
 layout: post
 title: "Android Workshop Part 2: Customising the colors"
 date: 2015-11-21
-type: "tutorial"
+category: "tutorial"
 ---
 
 Now we have our app set up, let's customise it a bit.

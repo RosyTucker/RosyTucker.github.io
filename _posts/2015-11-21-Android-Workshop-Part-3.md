@@ -2,7 +2,7 @@
 layout: post
 title: "Android Workshop Part 3: A List of TODOs"
 date: 2015-11-21
-type: "tutorial"
+category: "tutorial"
 ---
 
 At these are app is set up and looking beautiful, so let's make it do something. We are going to start by adding in a

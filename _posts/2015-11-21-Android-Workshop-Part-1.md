@@ -2,7 +2,7 @@
 layout: post
 title: "Android Workshop Part 1: Setting up"
 date: 2015-11-21
-type: "tutorial"
+category: "tutorial"
 ---
 
 The instructions laid out below are for setting up your computer to work with Android. This includes

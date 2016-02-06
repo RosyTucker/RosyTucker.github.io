@@ -2,7 +2,7 @@
 layout: post
 title: "Learning The JavaScript Type System, From Java"
 date: 2014-08-27
-type: blog
+category: blog
 ---
 
 When hearing about JavaScript (JS) you might expect it to be closely related to Java. Now is a good time to stop expecting this.
