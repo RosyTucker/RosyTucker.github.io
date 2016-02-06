@@ -56,7 +56,7 @@ becomes complex, this is because the value cannot be queried meaning more and mo
 information must be stored in the key, impacting performance. Key value stores therefore
 are best suited for less structured data, and are often used for caching.
 
-![Key Value]({{site.url}}/images/posts/KeyValue.png){:class="article-image"}
+![Key Value]({{site.url}}/images/posts/KeyValue.png){:class="post-image"}
 
 Document
 ------
@@ -92,7 +92,7 @@ Document stores are particularly good for two reasons.
         put together in the correct way, with a document store the invoice
         is treated as an aggregate, meaning one query and less latency.
 
-![Document]({{site.url}}/images/posts/Document.png){:class="article-image"}
+![Document]({{site.url}}/images/posts/Document.png){:class="post-image"}
 
 Column
 ------
@@ -107,7 +107,7 @@ columns. Just like the document store this model means an Object (such
 as the invoice above) can be stored in one place and not across multiple
 records in multiple tables of a relational database.
 
-![Document]({{site.url}}/images/posts/Column.png){:class="article-image"}
+![Document]({{site.url}}/images/posts/Column.png){:class="post-image"}
 
 Aggregate Oriented
 ------
@@ -134,7 +134,7 @@ edge between two nodes represents the relationship between them, both nodes
 and edges have properties. In the simple cases consider nodes which
 represent people, an edge between them could represent a friendship.
 
-![Graph database]({{site.url}}/images/posts/Graph.png){: class="article-image"}
+![Graph database]({{site.url}}/images/posts/Graph.png){: class="post-image"}
 
 The labels given to nodes are used for grouping, both "Tom" and "Jake" in
 the above diagram are of the same group, this aids querying as queries can
