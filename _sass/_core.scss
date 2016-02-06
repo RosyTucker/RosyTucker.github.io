@@ -1,0 +1,118 @@
+body {
+  background: url(../assets/images/background.png) repeat;
+  font-size: $base-text-size;
+  color: $darkest-text-color;
+  font-family: $font-family;
+}
+
+article {
+  @include size-specific-article(0, $base-text-size*1.3, $base-text-size, $base-text-size*0.8);
+
+  @media(min-width: 34em) {
+    @include size-specific-article(20px, $base-text-size*1.5, $base-text-size*1.2, $base-text-size*0.9);
+  }
+
+  @media(min-width: 48em) {
+    @include size-specific-article(10%, $base-text-size*1.7, $base-text-size*1.5, $base-text-size);
+  }
+
+  @media(min-width: 62em) {
+    @include size-specific-article(20%, $base-text-size*1.7, $base-text-size*1.5, $base-text-size);
+  }
+
+  header {
+    text-align: center;
+    margin: 30px 0;
+
+    h1, time {
+      font-weight: $light-font-weight;
+      color: $darkest-text-color;
+      margin: 10px;
+    }
+  }
+}
+
+figure {
+  margin: 10px;
+}
+
+code {
+  white-space: pre-wrap;
+  width: auto;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.post {
+  header {
+    text-align: center;
+    margin: 30px 0;
+  }
+
+  .content {
+    background: white;
+    padding: 20px;
+  }
+
+  .post-image {
+    @include center();
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.author-avatar {
+  @include center();
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+}
+
+.home {
+  height: 100vh;
+  @include flexbox();
+  @include justify-content(center);
+  @include flex-direction(column);
+  @include align-items(center);
+
+  .home-menu-row {
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+
+    a, a:hover, a:visited {
+      @include flexbox();
+      @include justify-content(center);
+      @include align-items(center);
+      @include flex-direction(column);
+      font-weight: bold;
+      color: $lightest-text-color;
+      font-size: $base-text-size * 1.5;
+      text-decoration: none;
+      text-align: center;
+      background: $primary-color;
+      width: 40vmin;
+      height: 40vmin;
+      max-height: 250px;
+      max-width: 250px;
+      margin: 5px;
+    }
+
+    &:nth-child(1) {
+      margin: 0 9vmin 0 0;
+    }
+
+    &:nth-child(2) {
+      margin: 0 -9vmin 0 0;
+    }
+
+    &:nth-child(1) a:nth-child(1), &:nth-child(2) a:nth-child(2) {
+      background: $primary-color;
+    }
+
+    &:nth-child(1) a:nth-child(2), &:nth-child(2) a:nth-child(1) {
+      background: $secondary-color;
+      color: $dark-text-color;
+    }
+  }
+}
