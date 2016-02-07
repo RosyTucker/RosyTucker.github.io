@@ -12,6 +12,22 @@ body {
   strong, h1, h2 {
     font-weight: 400;
   }
+
+  figure {
+    margin: 10px;
+  }
+
+  code {
+    white-space: pre-wrap;
+    width: auto;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+
+  a {
+    text-decoration: none;
+    color: $primary-color;
+  }
 }
 
 article {
@@ -57,6 +73,27 @@ article {
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+ul.post-list {
+  list-style: none;
+
+  .post-list-item {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+    &:not(:last-child) {
+      border-bottom: thin $dark-text-color solid;
+    }
+    h2, p, span {
+      margin: 5px 0;
+    }
+
+    span {
+      font-weight: $thin;
+      font-size: $base-text-size;
+    }
+  }
 }
 
 .post {

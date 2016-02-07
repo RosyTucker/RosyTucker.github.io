@@ -4,11 +4,11 @@ title: Blog
 permalink: /blog/
 ---
 
-<article>
+<section>
     <ul class="post-list">
         {% assign blogPosts = (site.posts | where: "category","blog") %}
         {% for post in blogPosts %}
-            {% include post-list-item.html %}
+        {% include post-list-item.html %}
         {% endfor %}
     </ul>
-</article>
+</section>
