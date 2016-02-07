@@ -4,7 +4,7 @@ title: About Rose Tucker
 permalink: /about/
 ---
 - Consultant software developer at **ThoughtWorks** London.
-- MEng computer science graduate from **York University**.
+- MEng computer science graduate from **The University of York**.
 
 - I most enjoy developing for embedded systems and mobile.
 - I don't have any strong preference for particular languages or frameworks. I tend to find that I choose the one that 
