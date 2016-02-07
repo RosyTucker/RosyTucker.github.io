@@ -4,14 +4,14 @@ layout: default
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
     <header>
-        <img class="author-avatar" src="https://pbs.twimg.com/profile_images/511434362743554048/38wGSMo1.jpeg"/>
+        <img class="author-avatar" src="{{site.author_avatar}}"/>
         <h1 itemprop="name headline">{{ page.title }}</h1>
         <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b
             %-d, %Y"
             }}
         </time>
         <div class="share">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-via="Rosy_Tucker">Tweet</a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="{{site.twitter_username}}">Tweet</a>
             <script>
                 !function (d, s, id) {
                     var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';

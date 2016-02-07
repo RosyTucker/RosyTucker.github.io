@@ -41,15 +41,14 @@ article {
   }
 }
 
-figure {
-  margin: 10px;
-}
-
-code {
-  white-space: pre-wrap;
-  width: auto;
-  word-break: break-all;
-  word-wrap: break-word;
+.social {
+  text-align: center;
+  img {
+    height: 24px;
+    width: auto;
+    padding: 0 3px;
+    margin: 0 2px;
+  }
 }
 
 .boids {

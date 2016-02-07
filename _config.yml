@@ -14,8 +14,11 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 
 url: "http://iceroad.co.uk"
-twitter_username: jekyllrb
-github_username:  jekyll
+
+author_avatar: https://pbs.twimg.com/profile_images/511434362743554048/38wGSMo1.jpeg
+twitter_username: Rosy_Tucker
+github_username: RosyTucker
+linkedin_username: tuckerrose
 
 # Build settings
 markdown: kramdown
