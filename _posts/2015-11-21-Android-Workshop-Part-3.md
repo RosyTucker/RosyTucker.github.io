@@ -70,9 +70,9 @@ written correctly, should always know how to recreate themselves in case the dev
 destroy it. The diagram below shows the **Activity Lifecycle**, the methods detailed are the methods in which you 
 should use to manage your screen. Avoid using constructors or static state, as this can be lost.
 
-For more information about how android applications are structured take a look [here](http://developer.android
-.com/guide/components/fundamentals.html). For more information on what each of the lifecycle methods are for,
-[check this out](http://developer.android.com/reference/android/app/Activity.html).
+For more information about how android applications are structured take a look
+[here](https://developer.android.com/guide/components/fundamentals.html). For more information on what each of the 
+lifecycle methods are for, [check this out](http://developer.android.com/reference/android/app/Activity.html).
 
 ![Activity Lifecycle]({{site.url}}/assets/images/posts/AndroidWorkshops/LifeCycle.png){:class="post-image"}
 
