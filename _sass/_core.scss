@@ -3,6 +3,15 @@ body {
   font-size: $base-text-size;
   color: $darkest-text-color;
   font-family: $font-family;
+  font-weight: $normal;
+
+  em, strong {
+    color: $tertiary-color;
+  }
+
+  strong, h1, h2 {
+    font-weight: 400;
+  }
 }
 
 article {
@@ -25,7 +34,7 @@ article {
     margin: 30px 0;
 
     h1, time {
-      font-weight: $light-font-weight;
+      font-weight: $thin;
       color: $darkest-text-color;
       margin: 10px;
     }
@@ -99,7 +108,7 @@ code {
       @include justify-content(center);
       @include align-items(center);
       @include flex-direction(column);
-      font-weight: bold;
+      font-weight: $thin;
       color: $lightest-text-color;
       font-size: $base-text-size * 1.5;
       text-decoration: none;
