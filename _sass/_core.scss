@@ -19,18 +19,36 @@ figure {
 }
 
 article {
-  @include size-specific-article(0, $base-text-size*1.3, $base-text-size, $base-text-size*0.8);
+  $h1-size: $base-text-size*2;
+  $h2-size: $base-text-size*1.5;
+  font-size: $base-text-size;
+  margin: 20px 0;
+  header {
+    h1 {
+      font-size: $h1-size * 2;
+    }
+    time {
+      font-size: $h1-size;
+    }
+  }
+
+  h1 {
+    font-size: $h1-size;
+  }
+  h2 {
+    font-size: $h2-size;
+  }
 
   @media(min-width: 34em) {
-    @include size-specific-article(20px, $base-text-size*1.5, $base-text-size*1.2, $base-text-size*0.9);
+    margin: 20px 20px;
   }
 
   @media(min-width: 48em) {
-    @include size-specific-article(10%, $base-text-size*1.7, $base-text-size*1.5, $base-text-size);
+    margin: 20px 10%;
   }
 
   @media(min-width: 62em) {
-    @include size-specific-article(20%, $base-text-size*1.7, $base-text-size*1.5, $base-text-size);
+    margin: 20px 20%;
   }
 }
 
