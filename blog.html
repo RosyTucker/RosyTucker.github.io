@@ -3,35 +3,21 @@ layout: default
 permalink: /blog/
 ---
 
-<div class="home">
+<article>
+    <header>
+        <h1>Blog</h1>
+    </header>
 
-  <h1 class="page-heading">Articles</h1>
+    <ul class="post-list">
+        {% assign blogPosts = (site.posts | where: "category","blog") %}
+        {% for post in blogPosts %}
+        <li>
+            <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-  <ul class="post-list">
-    {% assign blogPosts = (site.posts | where: "category","blog") %}
-    {% for post in blogPosts  %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <h1 class="page-heading">Tutorials</h1>
-
-  <ul class="post-list">
-    {% assign tutorials = (site.posts | where: "category","tutorial") %}
-    {% for post in tutorials  %}
-    <li>
-      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-      <h2>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </h2>
-    </li>
-    {% endfor %}
-  </ul>
-</div>
+            <h2>
+                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            </h2>
+        </li>
+        {% endfor %}
+    </ul>
+</article>
