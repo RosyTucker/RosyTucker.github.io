@@ -17,7 +17,7 @@ install the [Java SE Development Kit
 download the right version for your operating system.
 Make sure you accept the *license agreement*.
 
-![Java Installation]({{site.url}}/images/posts/AndroidWorkshops/JavaInstall.png){:class="post-image"}
+![Java Installation]({{site.url}}/assets/images/posts/AndroidWorkshops/JavaInstall.png){:class="post-image"}
 
 If running Windows you can find out if your machine is 64 bit (x64) or 32 bit (x86)
 [here](https://support.microsoft.com/en-us/kb/827218)
@@ -78,8 +78,8 @@ Setup an emulator
 - Double click on the newly created Nexus 5 device. A window that looks like an android phone will open and the 
 emulator will start up. You’ll know it’s ready when you see the phone’s lock screen. Leave the emulator open
 
-The android tools in the Android studio toolbar ![Android Tools]({{site.url}}/images/posts/AndroidWorkshops/AndroidTools
-.png){:class="post-image"}
+The android tools in the Android studio toolbar
+![Android Tools]({{site.url}}/assets/images/posts/AndroidWorkshops/AndroidTools.png){:class="post-image"}
     
 Step 5: Run the Application
 ==================
@@ -93,8 +93,8 @@ take a minute
 
 Your application should now be running on your device!
 
-![App icon on the phone]({{site.url}}/images/posts/AndroidWorkshops/AppOnPhone.png){:class="post-image"}
+![App icon on the phone]({{site.url}}/assets/images/posts/AndroidWorkshops/AppOnPhone.png){:class="post-image"}
 
-![App on the phone]({{site.url}}/images/posts/AndroidWorkshops/AppOpenOnPhone.png){:class="post-image"}
+![App on the phone]({{site.url}}/assets/images/posts/AndroidWorkshops/AppOpenOnPhone.png){:class="post-image"}
 
 For the event, if you are using a real Android device, don’t forget your USB cable for your phone.

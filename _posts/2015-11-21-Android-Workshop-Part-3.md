@@ -73,7 +73,7 @@ For more information about how android applications are structured take a look [
 .com/guide/components/fundamentals.html). For more information on what each of the lifecycle methods are for,
 [check this out](http://developer.android.com/reference/android/app/Activity.html).
 
-![Activity Lifecycle]({{site.url}}/images/posts/AndroidWorkshops/LifeCycle.png){:class="post-image"}
+![Activity Lifecycle]({{site.url}}/assets/images/posts/AndroidWorkshops/LifeCycle.png){:class="post-image"}
 
 Removing the Cruft
 ------
@@ -195,7 +195,7 @@ todo_list_item.xml
 {% endhighlight %}
 
 If you run this now it should look something like this:
-![Showing Items]({{site.url}}/images/posts/AndroidWorkshops/ShowingItems.png){:class="post-image"}
+![Showing Items]({{site.url}}/assets/images/posts/AndroidWorkshops/ShowingItems.png){:class="post-image"}
 So we now have some example items in our list, let's enable the add button.
 
 Step 4: Add a TODO
@@ -217,11 +217,11 @@ fab.setOnClickListener(new View.OnClickListener() {
 This code defines what happens when the user clicks the FAB, currently nothing. For now, we want clicking on the FAB
 to open a dialog, in which the user can enter their new todo. Something like this:
 
-![Dialog]({{site.url}}/images/posts/AndroidWorkshops/Dialog.png){:class="post-image"}
+![Dialog]({{site.url}}/assets/images/posts/AndroidWorkshops/Dialog.png){:class="post-image"}
 
 There are many different dialogs built into Android, and you can always
 
-![Dialog]({{site.url}}/images/posts/AndroidWorkshops/Dialog.png){:class="post-image"}
+![Dialog]({{site.url}}/assets/images/posts/AndroidWorkshops/Dialog.png){:class="post-image"}
 
 [make your own](http://developer.android.com/guide/topics/ui/dialogs.html)
 if you want a more interesting layout for now, let's use a build in one. In MainActivity create the following method:
@@ -358,7 +358,7 @@ adapter = new TodoAdapter(this, new ArrayList< String>());
 If you run the app now you should see something that looks like the screenshot below, and you should be able to add, 
 remove and check items in the list.
 
-![Done]({{site.url}}/images/posts/AndroidWorkshops/Done.png){:class="post-image"}
+![Done]({{site.url}}/assets/images/posts/AndroidWorkshops/Done.png){:class="post-image"}
 
 Step 6: Extensions
 ==================

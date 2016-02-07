@@ -12,7 +12,7 @@ Step 1: The FAB
 
 I'm not talking about being fabulous here, I'm talking about the *Floating Action Button*, shown below.
 
-![FAB]({{site.url}}/images/posts/AndroidWorkshops/FAB.png){:class="post-image"}
+![FAB]({{site.url}}/assets/images/posts/AndroidWorkshops/FAB.png){:class="post-image"}
 
 We are going to use this button to perform an action in our app, specifically adding an item to a list.
 Currently the button has a mail icon, we want to *change this to an add icon*.
@@ -28,7 +28,7 @@ In Android Studio, open the project navigator *View > Tool Windows > Project* an
 open `activity_main.xml` from the res > layout folder. You'll see a picture of a phone with our current layout in it.
  This is design mode, this won't be covered in this workshop as it's rather fiddly. Instead let's switch to **Text** 
  mode using the toggle shown below:
-![Design Mode]({{site.url}}/images/posts/AndroidWorkshops/DesignMode.png){:class="post-image"}
+![Design Mode]({{site.url}}/assets/images/posts/AndroidWorkshops/DesignMode.png){:class="post-image"}
 
 At the bottom of the file you should see code that looks like this:
 
@@ -58,7 +58,7 @@ android:src="@android:drawable/ic_input_add"
 
 If you click the play button again now to run the application, you'll see the FAB looks like this:
 
-![Add FAB]({{site.url}}/images/posts/AndroidWorkshops/AddFAB.png)
+![Add FAB]({{site.url}}/assets/images/posts/AndroidWorkshops/AddFAB.png)
 
 It's the right icon, but the colours are terrible, so lets fix it.
 
@@ -98,7 +98,7 @@ Change it to the color of your choice (ideally not white). You can pick a color 
 picker by clicking on the little pink square next to the variable definition.
 
 Try running your app again now, you should see that the FAB looks something like this:
-![Coloured FAB]({{site.url}}/images/posts/AndroidWorkshops/FABColoured.png){:class="post-image"}
+![Coloured FAB]({{site.url}}/assets/images/posts/AndroidWorkshops/FABColoured.png){:class="post-image"}
 
 Step 2: The Navigation Bar
 ==================
