@@ -6,15 +6,23 @@
   display: flex;
 }
 
-@mixin flex($values) {
-  -webkit-box-flex: $values;
-  -moz-box-flex: $values;
-  -webkit-flex: $values;
-  -ms-flex: $values;
-  flex: $values;
+@mixin flex($grow: 1, $shrink: null, $basis: null) {
+
+  $fg-boxflex: $grow;
+
+  @if type-of($grow) == 'list' {
+    $fg-boxflex: nth($grow, 1);
+  }
+
+  -webkit-box-flex: $fg-boxflex;
+  -webkit-flex: $grow $shrink $basis;
+  -moz-box-flex: $fg-boxflex;
+  -moz-flex: $grow $shrink $basis;
+  -ms-flex: $grow $shrink $basis;
+  flex: $grow $shrink $basis;
 }
 
-@mixin flex-flow($values: (row nowrap)) {
+@mixin flex-flow($values) {
   -webkit-flex-flow: $values;
   -moz-flex-flow: $values;
   -ms-flex-flow: $values;

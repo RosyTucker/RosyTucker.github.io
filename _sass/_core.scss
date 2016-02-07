@@ -47,7 +47,7 @@ article {
     margin: 20px 10%;
   }
 
-  @media(min-width: 62em) {
+  @media(min-width: 75em) {
     margin: 20px 20%;
   }
 }
@@ -88,20 +88,23 @@ article.projects-container {
 
   .projects {
     @include flexbox();
-    @include flex-flow(row, wrap);
+    @include flex-flow(row wrap);
     @include justify-content(center);
     list-style: none;
     padding: 0;
   }
 
   .project {
-    @include flex(1 0 100%);
+
+    @include flex(1, 0, 100%);
+
     @media(min-width: 34em) {
-      @include flex(1 0 35%);
+      @include flex(1, 0, 35%);
     }
     @media(min-width: 62em) {
-      @include flex(1 0 25%);
+      @include flex(1, 0, 25%);
     }
+
     max-width: 200px;
     height: 200px;
     margin: 10px;
