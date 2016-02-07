@@ -211,6 +211,13 @@ ul.post-list {
   }
 }
 
+.center {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
 .post {
   header {
     text-align: center;
@@ -229,14 +236,23 @@ ul.post-list {
   }
 
   .post-image {
-    @include center();
+    @extend .center;
     max-width: 100%;
     height: auto;
   }
 }
 
+.screenshot-group {
+  text-align: center;
+  img {
+    margin: 5px;
+    width: 20%;
+    min-width: 120px;
+  }
+}
+
 .author-avatar {
-  @include center();
+  @extend .center;
   width: 130px;
   height: 130px;
   border-radius: 50%;

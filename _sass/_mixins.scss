@@ -18,12 +18,6 @@
   }
 }
 
-@mixin center() {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 @mixin flexbox() {
   display: -webkit-box;
   display: -moz-box;
