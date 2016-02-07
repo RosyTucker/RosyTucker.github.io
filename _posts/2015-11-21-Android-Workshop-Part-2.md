@@ -6,6 +6,7 @@ category: "tutorial"
 ---
 
 Now we have our app set up, let's customise it a bit.
+<!--more-->
 
 Step 1: The FAB
 ==================
