@@ -1,7 +1,9 @@
 <li class="post-list-item">
-    <h2>
-        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-    </h2>
-    <span class="meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-    <p>{{ post.excerpt }}</p>
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2>
+            {{ post.title }}
+        </h2>
+        <span class="meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <p>{{ post.excerpt }}</p>
+    </a>
 </li>

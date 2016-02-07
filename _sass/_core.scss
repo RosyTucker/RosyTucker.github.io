@@ -57,16 +57,6 @@ article {
   }
 }
 
-.social {
-  text-align: center;
-  img {
-    height: 24px;
-    width: auto;
-    padding: 0 3px;
-    margin: 0 2px;
-  }
-}
-
 .boids {
   margin: 0;
   position: absolute;
@@ -75,66 +65,14 @@ article {
   z-index: -1;
 }
 
-ul.post-list {
-  list-style: none;
-
-  .post-list-item {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-
-    &:not(:last-child) {
-      border-bottom: thin $dark-text-color solid;
-    }
-    h2, p, span {
-      margin: 5px 0;
-    }
-
-    span {
-      font-weight: $thin;
-      font-size: $base-text-size;
-    }
-  }
-}
-
-.post {
-  header {
-    text-align: center;
-    margin: 30px 0;
-  }
-
-  .share {
-    margin-top: 20px;
-    .twitter-tweet-button {
-      vertical-align: top;
-    }
-  }
-  .content {
-    background: white;
-    padding: 20px;
-  }
-
-  .post-image {
-    @include center();
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-.author-avatar {
-  @include center();
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-}
-
-.home {
+.tile-group {
   height: 100vh;
   @include flexbox();
   @include justify-content(center);
   @include flex-direction(column);
   @include align-items(center);
 
-  .home-menu-row {
+  .tile-row {
     @include flexbox();
     @include justify-content(center);
     @include align-items(center);
@@ -174,4 +112,72 @@ ul.post-list {
       color: $dark-text-color;
     }
   }
+}
+
+.social {
+  text-align: center;
+  img {
+    height: 24px;
+    width: auto;
+    padding: 0 3px;
+    margin: 0 2px;
+  }
+}
+
+ul.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+  .post-list-item {
+
+    &:not(:last-child) {
+      border-bottom: thin $dark-text-color solid;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+    }
+
+    h2, p, span {
+      margin: 5px 0;
+    }
+
+    a p, a span {
+      color: $darkest-text-color;
+    }
+
+    span {
+      font-weight: $thin;
+      font-size: $base-text-size;
+    }
+  }
+}
+
+.post {
+  header {
+    text-align: center;
+    margin: 30px 0;
+  }
+
+  .share {
+    margin-top: 20px;
+    .twitter-tweet-button {
+      vertical-align: top;
+    }
+  }
+  .content {
+    background: white;
+    padding: 20px;
+  }
+
+  .post-image {
+    @include center();
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.author-avatar {
+  @include center();
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
 }
