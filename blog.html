@@ -1,23 +1,14 @@
 ---
-layout: default
+layout: page
+title: Blog
 permalink: /blog/
 ---
 
 <article>
-    <header>
-        <h1>Blog</h1>
-    </header>
-
     <ul class="post-list">
         {% assign blogPosts = (site.posts | where: "category","blog") %}
         {% for post in blogPosts %}
-        <li>
-            <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-            <h2>
-                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-            </h2>
-        </li>
+            {% include post-list-item.html %}
         {% endfor %}
     </ul>
 </article>

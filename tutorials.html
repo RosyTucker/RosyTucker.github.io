@@ -1,22 +1,13 @@
 ---
-layout: default
+layout: page
+title: Tutorials
 permalink: /tutorials/
 ---
 <section>
-    <header>
-        <h1>Tutorials</h1>
-    </header>
-
     <ul class="post-list">
         {% assign tutorials = (site.posts | where: "category","tutorial") %}
         {% for post in tutorials %}
-        <li>
-            <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-            <h2>
-                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-            </h2>
-        </li>
+            {% include post-list-item.html %}
         {% endfor %}
     </ul>
 </section>
