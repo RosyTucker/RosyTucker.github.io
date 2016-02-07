@@ -57,6 +57,12 @@ code {
     margin: 30px 0;
   }
 
+  .share {
+    margin-top: 20px;
+    .twitter-tweet-button {
+      vertical-align: top;
+    }
+  }
   .content {
     background: white;
     padding: 20px;
