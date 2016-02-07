@@ -9,6 +9,7 @@ When hearing about JavaScript (JS) you might expect it to be closely related to 
 They are incredibly different, both syntactically and semantically, they perform different functions
 and are used in different situations.
 This article is meant to help those familiar with Java get to grips with typing in JS.
+
 <!--more-->
 
 Both languages are **Object-Oriented** languages, so I guess they have that in common ... but that's about it.

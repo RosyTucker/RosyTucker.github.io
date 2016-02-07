@@ -11,6 +11,7 @@ This article explains the
 meaning of NoSQL, the main types of NoSQL data stores, and
 when you would use each type. The overall message of the article is to choose the right
 data store for your data format.
+
 <!--more-->
 
 No SQL

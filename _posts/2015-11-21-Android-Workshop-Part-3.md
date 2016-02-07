@@ -7,6 +7,7 @@ category: "tutorial"
 
 At these are app is set up and looking beautiful, so let's make it do something. We are going to start by adding in a
  list, and setting up a TODO object.
+ 
 <!--more-->
 
 Step 1: Defining the scope

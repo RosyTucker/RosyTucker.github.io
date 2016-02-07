@@ -7,6 +7,7 @@ category: "tutorial"
 
 The instructions laid out below are for setting up your computer to work with Android. This includes
 configuring Android Studio (the IDE), and setting up a test device.
+
 <!--more-->
 
 Step 1: Installing Java

@@ -7,6 +7,7 @@ category: "tutorial"
 
 Now we have our app set up, let's customise it a bit. In this tutorial we will at a Floating action button and 
 customise the navigation bar and colors.
+
 <!--more-->
 
 Step 1: The FAB
