@@ -40,6 +40,13 @@
   flex: $values;
 }
 
+@mixin flex-flow($direction, $wrap) {
+  -webkit-flex-flow: $direction $wrap;
+  -moz-flex-flow: $direction $wrap;
+  -ms-flex-flow: $direction $wrap;
+  flex-flow: $direction $wrap;
+}
+
 @mixin flex-direction($value: row) {
   @if $value == row-reverse {
     -webkit-box-direction: reverse;

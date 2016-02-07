@@ -4,30 +4,18 @@ body {
   color: $darkest-text-color;
   font-family: $font-family;
   font-weight: $normal;
+}
 
-  em, strong {
-    color: $tertiary-color;
-  }
+em, strong {
+  color: $tertiary-color;
+}
 
-  strong, h1, h2 {
-    font-weight: 400;
-  }
+strong, h1, h2 {
+  font-weight: 400;
+}
 
-  figure {
-    margin: 10px;
-  }
-
-  code {
-    white-space: pre-wrap;
-    width: auto;
-    word-break: break-all;
-    word-wrap: break-word;
-  }
-
-  a {
-    text-decoration: none;
-    color: $primary-color;
-  }
+figure {
+  margin: 10px;
 }
 
 article {
@@ -44,16 +32,28 @@ article {
   @media(min-width: 62em) {
     @include size-specific-article(20%, $base-text-size*1.7, $base-text-size*1.5, $base-text-size);
   }
+}
 
-  header {
-    text-align: center;
-    margin: 30px 0;
+code {
+  white-space: pre-wrap;
+  width: auto;
+  word-break: break-all;
+  word-wrap: break-word;
+}
 
-    h1, time {
-      font-weight: $thin;
-      color: $darkest-text-color;
-      margin: 10px;
-    }
+a {
+  text-decoration: none;
+  color: $primary-color;
+}
+
+header {
+  text-align: center;
+  margin: 30px 0;
+
+  h1, time {
+    font-weight: $thin;
+    color: $darkest-text-color;
+    margin: 10px;
   }
 }
 
@@ -65,14 +65,74 @@ article {
   z-index: -1;
 }
 
-.tile-group {
+article.projects-container {
+  margin: 20px;
+
+  .projects {
+    @include flexbox();
+    @include flex-flow(row, wrap);
+    @include justify-content(center);
+    list-style: none;
+    padding: 0;
+  }
+
+  .project {
+    @include flex(1 0 100%);
+    @media(min-width: 34em) {
+      @include flex(1 0 35%);
+    }
+    @media(min-width: 62em) {
+      @include flex(1 0 25%);
+    }
+    max-width: 200px;
+    height: 200px;
+    margin: 10px;
+    padding: 5px;
+    background: $primary-color;
+
+    * {
+      text-align: center;
+      font-weight: $thin;
+    }
+
+    a {
+      @include flexbox();
+      @include justify-content(center);
+      @include align-items(center);
+      @include flex-direction(column);
+      width: 100%;
+      height: 100%;
+      color: $lightest-text-color;
+    }
+
+    &:nth-child(4n + 2) {
+      background: $secondary-color;
+      a {
+        color: $dark-text-color;
+      }
+    }
+
+    &:nth-child(4n + 3) {
+      background: $tertiary-color;
+    }
+
+    &:nth-child(4n + 4) {
+      background: $dark-text-color;
+      a {
+        color: $secondary-color;
+      }
+    }
+  }
+}
+
+.home-tile-group {
   height: 100vh;
   @include flexbox();
   @include justify-content(center);
   @include flex-direction(column);
   @include align-items(center);
 
-  .tile-row {
+  .home-tile-group-row {
     @include flexbox();
     @include justify-content(center);
     @include align-items(center);
@@ -84,7 +144,7 @@ article {
       @include flex-direction(column);
       font-weight: $thin;
       color: $lightest-text-color;
-      font-size: $base-text-size * 1.5;
+      font-size: $base-text-size * 1.7;
       text-decoration: none;
       text-align: center;
       background: $primary-color;
@@ -95,11 +155,11 @@ article {
       margin: 5px;
     }
 
-    &:nth-child(1) {
+    &:nth-child(1n) {
       margin: 0 9vmin 0 0;
     }
 
-    &:nth-child(2) {
+    &:nth-child(2n) {
       margin: 0 -9vmin 0 0;
     }
 
