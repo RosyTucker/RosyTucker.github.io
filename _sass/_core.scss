@@ -43,6 +43,14 @@ code {
   word-wrap: break-word;
 }
 
+.boids {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 .post {
   header {
     text-align: center;
