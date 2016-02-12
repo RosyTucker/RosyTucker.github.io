@@ -5,12 +5,12 @@ date: 2016-02-12
 category: blog
 ---
 
-7th Febuary 2016:  Npm Progress bar
+7th Febuary 2016:  NPM Progress bar
 ================
-- npm is broken, the progress bar is blocking, causing progress to slow.
-- run `npm set progress=false` to speed up all the things
+The current version of NPM (3.5.2), and possibly other versions, have an interesting issue. Having the progress bar enabled actually slows the install process by around 20%. Running the command `npm set progress=false` will disable the progress bar, and thus bypass the code causing the issue.
+If you are interested in the in depth analysis of why this is an issue, there is a comment on [this](https://github.com/npm/npm/issues/11283) thread that describes it in incredible detail.
 
-8th Febuary 2016:  SSL Protocols and Negotiations 
+8th Febuary 2016:  SSL Protocols and Negotiations
 ================
 - SSL vs TLS
 - The impact of supporting particular protocols
