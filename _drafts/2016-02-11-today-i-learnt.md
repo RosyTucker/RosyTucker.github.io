@@ -18,13 +18,24 @@ When a client sends a HTTP request to a server, the connects of that request are
 
 HTTP is a protocol, it defines the format of a request and response, to ensure that the client and the server understand each other. HTTPS is another such protocol, the 'S' here stands for secure. People are generally aware that, if for example you are filling in a login form, HTTPS is the better option. But why and what does it really mean?
 
+SSL Certificates
+------
+
+HTTPS requests are encrypted in transport between the client and the server. In order to do this, the server requires a certificate, this certicicate is sent to the client when first contact is made, for example when you load [https://github.com](https://github.com).
+
+This certificate is used to identify the server, as a particular domain name and company. A certificate authority (CA) signs this certificate saying that they trust these details to be correct. The certificate binds the domain name to a public key.
+
+When a client makes a request to the server, which has this certificate, the client will first check the domain name.
+If the domain name matches the address to which the request is being made then the client will check the CA against its trusted CAs.
+If the CA is trusted then the client will take the public key provided by the certificate and use it to start communicating securely.
+
+As an aside, an important thing to remember here is that this process all relies on the CA being trusted. CAs have a root cerificate, this certificate is what was used to sign further certificates. Browsers normally come with these root certificates installed, so that they can identify fraudgenent that have not been correctly signed. If a CA becomes comprimised, a browser may remove its root certificate from its trusted set and thus will report any sites trying to comminicate over HTTPS with a certificate signed by this root certificate as insecure.
+The idea that the browser has a copy of the CA root certificates is an example of certificate pinning. The browser does not need to rely on anyone else in order to check the authenticity of a certificate. This can be done in server to server comminication too, or mobile apps for example. If a client pins the certificate of a server it means that it does not require a CA in order check the authenticity of a certificate, as it has the actual certificate for reference. This means that a server can say that it will only trust a particular certificate. This is much more secure than having to trust a CA. A mobile, for example, may ship with the certificate for it's API, meaning it will only trust communications from the APi's domain. Google chrome also uses a variation of this mechanism.
+
+
 Not all HTTPS requests work the same way
 ------
 
-HTTPS requests are encrypted in transport between the client and the server. The server requires a certificate, this certicicate is sent to the client when first contact is made, for example when you load [https://github.com](https://github.com).
-
-This certificate is used to identify the server, as a particular domain name and company. A certificate authority (CA) signs this certificate. If your browser trusts this CA then when it recieves the certificate it will check that the domain name it was created for and the domain you are accessing match up. 
-The certificate contains a public key, 
 SSL and TLS
 ------
 
