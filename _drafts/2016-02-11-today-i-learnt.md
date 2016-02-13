@@ -12,12 +12,19 @@ If you are interested in the in depth analysis of why this is an issue, there is
 
 8th Febuary 2016:  SSL Protocols and Negotiations
 ================
-When a client sends a HTTP request to a server, the connects of that request are in plain text. This means that anyone else, outside the client that sent the request and the server that the request was inteneded for, would be able to see the contents of that request. Normally a HTTP request looks something like the following:
+When a client sends a HTTP request to a server, the connects of that request are in *plain text*. This means that anyone else, outside the client that sent the request and the server that the request was inteneded for, would be able to see the contents of that request. Is is what is known as **Man in the Middle**. A HTTP request looks something like the following:
 
 <diagram>
 
 HTTP is a protocol, it defines the format of a request and response, to ensure that the client and the server understand each other. HTTPS is another such protocol, the 'S' here stands for secure. People are generally aware that, if for example you are filling in a login form, HTTPS is the better option. But why and what does it really mean?
 
+Not all HTTPS requests work the same way
+------
+
+HTTPS requests are encrypted in transport between the client and the server. The server requires a certificate, this certicicate is sent to the client when first contact is made, for example when you load [https://github.com](https://github.com).
+
+This certificate is used to identify the server, as a particular domain name and company. A certificate authority (CA) signs this certificate. If your browser trusts this CA then when it recieves the certificate it will check that the domain name it was created for and the domain you are accessing match up. 
+The certificate contains a public key, 
 SSL and TLS
 ------
 
