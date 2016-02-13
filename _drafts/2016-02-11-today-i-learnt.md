@@ -30,12 +30,16 @@ If the domain name matches the address to which the request is being made then t
 If the CA is trusted then the client will take the public key provided by the certificate and use it to start communicating securely.
 
 As an aside, an important thing to remember here is that this process all relies on the CA being trusted. CAs have a root cerificate, this certificate is what was used to sign further certificates. Browsers normally come with these root certificates installed, so that they can identify fraudgenent that have not been correctly signed. If a CA becomes comprimised, a browser may remove its root certificate from its trusted set and thus will report any sites trying to comminicate over HTTPS with a certificate signed by this root certificate as insecure.
-The idea that the browser has a copy of the CA root certificates is an example of certificate pinning. The browser does not need to rely on anyone else in order to check the authenticity of a certificate. This can be done in server to server comminication too, or mobile apps for example. If a client pins the certificate of a server it means that it does not require a CA in order check the authenticity of a certificate, as it has the actual certificate for reference. This means that a server can say that it will only trust a particular certificate. This is much more secure than having to trust a CA. A mobile, for example, may ship with the certificate for it's API, meaning it will only trust communications from the APi's domain. Google chrome also uses a variation of this mechanism.
-
+The idea that the browser has a copy of the CA root certificates is an example of certificate pinning. The browser does not need to rely on anyone else in order to check the authenticity of a certificate. This can be done in server to server comminication too, or mobile apps for example. If a client pins the certificate of a server it means that it does not require a CA in order check the authenticity of a certificate, as it has the actual certificate for reference. This means that a server can say that it will only trust a particular certificate. This is much more secure than having to trust a CA. A mobile, for example, may ship with the certificate for it's API, meaning it will only trust communications from the APi's domain. Google chrome also uses a [variation](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security) of this mechanism.
 
 Not all HTTPS requests work the same way
 ------
 
+(this needs to be re ordered, protocol negotiation happens before cert exchange)
+
+So, given the servers certificate has been validated by the client, we are now ready to start sending encrypted requests. Well not just yet, we need to make sure our client is cabable of understanding the server and vice versa. This is where the encryption protocol becomes important.
+
+Until recently the protocol used for sending these encrypted requests has been SSL (Secure Sockets Layer), however, recently SSL 3 (the latest version) has been shown to be insecure (POODLE) and is open to exploitation. This leaves TLS to protect the intenet. TLS (transport layer security) is an encryption policy 
 SSL and TLS
 ------
 
