@@ -7,6 +7,7 @@ category: blog
 
 The current version of *NPM (3.5.2)*, and possibly other versions, have an interesting issue.
 Having the progress bar enabled actually slows the install process by around **20%**.
+
 <!--more-->
 
 Running the command `npm set progress=false` will disable the progress bar, and thus bypass the code causing the issue.
