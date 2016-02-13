@@ -12,6 +12,15 @@ If you are interested in the in depth analysis of why this is an issue, there is
 
 8th Febuary 2016:  SSL Protocols and Negotiations
 ================
+When a client sends a HTTP request to a server, the connects of that request are in plain text. This means that anyone else, outside the client that sent the request and the server that the request was inteneded for, would be able to see the contents of that request. Normally a HTTP request looks something like the following:
+
+<diagram>
+
+HTTP is a protocol, it defines the format of a request and response, to ensure that the client and the server understand each other. HTTPS is another such protocol, the 'S' here stands for secure. People are generally aware that, if for example you are filling in a login form, HTTPS is the better option. But why and what does it really mean?
+
+SSL and TLS
+------
+
 - SSL vs TLS
 - The impact of supporting particular protocols
 - Client server negotiation and ciphers
