@@ -5,7 +5,7 @@ Setup
 - Install rbenv
 - Clone repository
 - `gem install jekyll`
-- `gem install htmlproofer`
+- `gem install html-proofer`
 
 Build
 ==================
