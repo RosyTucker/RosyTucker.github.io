@@ -22,7 +22,9 @@ Let's say you have written a piece of *insert favourite programming language her
 int result = 10 + 5;
 {% endhighlight %}
 
-This code is stored on a file on your machine, and you want to execute it, to get the result. **But how does that actually work? Computers are digital right? Don't they only understand 1's and 0s**?
+This code is stored on a file on your machine, and you want to execute it, to get the result.
+
+**But how does that actually work? Computers are digital right? Don't they only understand 1's and 0s**?
 
 Believe it or not there are no magic fairies inside of your machine, doing the math. What actually happens is the following:
 
@@ -41,4 +43,16 @@ Glad you asked! So because we know the binary code needs to change depending on 
 *We need something in the middle*
 
 We want to be able to give something our source code and have it look at the CPU of the machine. Using those two pieces of information it can determine what the binary code representation of the source code is, for this particular CPU. The CPU can then be given that binary and use it to compute a result (we will go into how it does that later).
+
+There are a couple of standard options for how to do this conversion from source code to binary code. Generally the source code will either be compiled, interpretteted or both.
+
+**Compiled? Interpretted? What does this mean?**
+
+### Compiling Code
+
+
+### Intepretting Code
+
+
+### Doing Both
 
