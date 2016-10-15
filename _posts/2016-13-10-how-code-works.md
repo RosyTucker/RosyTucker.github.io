@@ -5,16 +5,16 @@ date: 2016-02-12
 category: blog
 ---
 
-So you have written a program in *insert favourite language here* that looks something like this ...
+So you have written a program in *insert favourite language here* and you want to execute it.
+
+**How does that actually work?**
+
+<!--more-->
 
 {% highlight java%}
 int result = 10 + 5;
 logger.log(result);
 {% endhighlight %}
-
-... and you want to execute it.
-
-**How does that actually work?**
 
 The first step to understanding how a computer runs your code, is knowing that every computer has a *CPU* (central processing unit).
 This is a hardware chip, and is responsible for executing commands known as *instructions*. Every-time you ask a computer to do something it goes through it the computer's CPU.
