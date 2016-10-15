@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How Does Code Run - Compilers, Interpreters and CPUs"
-date: 2016-13-10
+date: 2016-10-13
 category: blog
 ---
 
