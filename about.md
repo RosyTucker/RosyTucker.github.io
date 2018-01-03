@@ -3,20 +3,15 @@ layout: page
 title: About Rose Tucker
 permalink: /about/
 ---
-- Consultant software developer at **ThoughtWorks** London.
+- Software engineer at **Improbable** London, ex-ThoughtWorks.
 - MEng computer science graduate from **The University of York**.
 
-- I most enjoy developing for embedded systems and mobile.
-- I don't have any strong preference for particular languages or frameworks. I tend to find that I choose the one that 
-feels right for the problem at hand. I'm not a *\[Insert programming language here\]* developer, I'm very 
-much a **polyglot developer**.
-- I have a strong preference for working closely with business folks and product owners, I would dislike to be in a 
-development team that is very segregated from their stakeholders and customers.
+- I most enjoy developing software for embedded systems, devops, and building anything that people actually need.
+- I don't have any strong preference for particular languages or frameworks.
+- I have a strong preference for working closely with customers, business folks, and product owners.
 - I prefer working as part of a cross functional team, and taking a **lean** approach to development.
 
-- I **love coaching** and teaching people coding skills, and often volunteer at events in order to do so.
-- I strongly believe that regardless of money, gender, race, or anything else, everyone has the right to learn. As 
-such, I am always happy to teach those who are willing and am also **always happy to be taught**.
+- I **love coaching** and teaching people coding skills, and often volunteer at events in order to do so. I'm open to new events and coaching opurtunities in and around London.
 
 
 
