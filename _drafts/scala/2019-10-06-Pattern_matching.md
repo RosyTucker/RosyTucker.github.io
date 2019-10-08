@@ -15,7 +15,7 @@ over a simple switch.
 The Switch Statement
 ====================
 
-So in order to understand pattern matching, and why it's more than just a *switch* statement, it's important to understand what a switch statement really is, and it's limitations.
+So in order to understand pattern matching, and why it is more than just a *switch* statement, we first need to understand what a switch statement really is, and the limitations.
 
 Here is a classic Java switch statement
 
