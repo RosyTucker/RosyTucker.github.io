@@ -13,7 +13,7 @@ description: > # this means to ignore newlines until "baseurl:"
 
 baseurl: "" # the subpath of your site, e.g. /blog
 
-url: "https://iceroad.co.uk"
+url: "https://rosytucker.github.io"
 
 author_avatar: https://pbs.twimg.com/profile_images/511434362743554048/38wGSMo1.jpeg
 twitter_username: Rosy_Tucker
